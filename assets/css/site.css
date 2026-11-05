@@ -29,3 +29,23 @@
 @media(max-width:1120px){.shot-powered{margin-left:auto}.shot-powered span{display:none}.shot-powered img{width:76px}.nav{gap:11px}.nav a{font-size:.65rem}}
 @media(max-width:900px){.shot-powered{margin-left:auto}.menu-toggle{display:block;margin-left:0}.nav{display:none;position:absolute;left:0;top:82px;width:100%;background:#fff;padding:18px 24px 25px;border-bottom:1px solid var(--line);box-shadow:0 15px 20px rgba(0,0,0,.12);flex-direction:column;align-items:stretch;gap:0}.nav.open{display:flex}.nav a{font-size:.86rem;padding:13px 0}.partner-grid{grid-template-columns:1fr}}
 @media(max-width:760px){.nav{top:70px}.shot-powered{margin-left:auto}.shot-powered img{width:70px}.hero-photo.full-photo{right:0;bottom:0;width:100%;height:43%;object-fit:contain}.hero-stamp{bottom:20px}.performance-mark{min-height:260px}.partner-card{min-height:300px}}
+
+/* Competition entry and partner roles. */
+.entry-pricing{margin-top:78px}
+.entry-heading{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:25px}
+.entry-heading h2{margin:8px 0 0}
+.entry-heading p{max-width:430px;margin:0}
+.entry-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.entry-card{min-height:245px;padding:27px;background:#fff;border-top:7px solid var(--blue);display:flex;flex-direction:column;align-items:flex-start}
+.entry-card:nth-child(2){border-color:var(--red)}
+.entry-card:nth-child(3){border-color:var(--deep)}
+.entry-card strong{font-family:'Barlow Condensed',Impact,sans-serif;font-size:clamp(4.5rem,7vw,7rem);line-height:1;color:var(--deep);margin:20px 0 12px}
+.entry-card p{font-size:.9rem;margin:auto 0 0}
+.entry-footnote{font-size:.88rem;margin:20px 0 0;color:var(--muted)}
+.partner-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+.partner-card{min-height:305px}
+.partner-card .eyebrow{margin-bottom:20px}
+.brand-card{background:var(--blue)}
+.shirt-card{background:var(--deep)}
+@media(max-width:1100px){.partner-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){.entry-heading{display:block}.entry-heading p{margin-top:18px}.entry-grid,.partner-grid{grid-template-columns:1fr}.entry-card{min-height:205px}.partner-card{min-height:260px}}
