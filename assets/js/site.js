@@ -1,4 +1,5 @@
 import { events, news, dateLabel } from './data.js';
+import { newsArchive, newsArchiveUpdated } from './news-archive.js';
 
 const page = document.body.dataset.page || 'home';
 const root = document.getElementById('app');
@@ -78,8 +79,13 @@ function teamsPage() {
   <section class="section dark"><div class="container split"><div><span class="eyebrow">Beyond the badge</span><h2>A pathway worth sharing.</h2><p class="lead">From regional opportunity to the international game, each stage should give players a place to learn, connect and keep moving forward.</p></div><img src="/assets/images/women-celebrate.webp" alt="England beach soccer players celebrating on sand" loading="lazy"></div></section></main>`;
 }
 function newsPage() {
-  return `<main id="main">${pageHero('Latest from the sand', 'News & culture.', 'Matches, milestones, people and places. A home for the stories behind the game.', 'red-theme')}
-  <section class="section"><div class="container"><div class="section-head"><div><span class="eyebrow red">Editorial</span><h2>Worth the read.</h2></div><p>These verified 2026 stories currently live on the England Beach Soccer website. This space is ready for a future connected news feed.</p></div><div class="news-grid">${news.map(newsCard).join('')}</div></div></section></main>`;
+  const years = [...new Set(newsArchive.map(item => item.date.slice(0, 4)))];
+  return `<main id="main">${pageHero('From the sand', 'News & culture.', 'Matches, milestones, people and places. Follow the stories behind the game.', 'red-theme')}
+  <section class="section"><div class="container"><div class="section-head"><div><span class="eyebrow red">Featured stories</span><h2>Worth the read.</h2></div><p>Start with recent moments from the England Beach Soccer story.</p></div><div class="news-grid">${news.map(newsCard).join('')}</div></div></section>
+  <section class="section white"><div class="container"><div class="section-head"><div><span class="eyebrow red">The complete archive</span><h2>Every story.</h2></div><p>${newsArchive.length} published articles from 2019 to 2026. Browse here, then open the original article on England Beach Soccer’s current website.</p></div>
+  <div class="archive-controls"><label class="archive-search-label" for="news-search">Search stories<input id="news-search" type="search" placeholder="Search by title" autocomplete="off"></label><label for="news-year">Published year<select id="news-year"><option value="all">All years</option>${years.map(year => `<option value="${year}">${year}</option>`).join('')}</select></label></div>
+  <p id="news-count" class="archive-count" role="status" aria-live="polite"></p><div id="news-results" class="archive-list"></div><button id="news-more" class="btn btn-blue" type="button" hidden>Show more stories</button>
+  <p class="archive-source">Archive checked ${new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(new Date(`${newsArchiveUpdated}T12:00:00Z`))}. Titles, dates and links come from the <a href="https://www.englandbeachsoccer.org/news" target="_blank" rel="noopener">current England Beach Soccer site ↗</a>. New articles will appear after the archive is refreshed.</p></div></section></main>`;
 }
 function shopPage() {
   return `<main id="main">${pageHero('Wear the movement', 'The shop.', 'From the touchline to the sand. A bold new home for England Beach Soccer kit and culture.')}
@@ -92,7 +98,13 @@ function membershipPage() {
 }
 function partnersPage() {
   return `<main id="main">${pageHero('Built together', 'Partners.', 'The game grows when communities, brands and football organisations move together.', 'red-theme')}
-  <section class="section white"><div class="container"><div class="section-head"><div><span class="eyebrow red">The people building this</span><h2>More reach.<br>More impact.</h2></div><p>Five roles across the experience, from what happens on the sand to the digital home around it.</p></div><div class="partner-grid"><article class="partner-card brand-card"><span class="eyebrow">Outerwear</span><h3>Dryrobe</h3><p>For life beside the sand.</p></article><article class="partner-card brand-card"><span class="eyebrow">Equipment</span><h3>Forza</h3><p>For the game itself.</p></article><article class="partner-card donis-card"><span class="eyebrow">Partnerships / delivery</span><img src="/assets/brand/donis-wordmark-white.png" alt="Donis"><h3>Donis</h3><p>Partnership and delivery across the football community.</p><a class="text-link" href="https://donis.shotclubhouse.com/" target="_blank" rel="noopener">Explore Donis ↗</a></article><article class="partner-card shot-card"><span class="eyebrow">Software / powered by</span><img src="/assets/brand/shot-logo.png" alt="SHOT Clubhouse"><h3>SHOT Clubhouse</h3><p>Powering the EBS website and shaping its connected digital experience.</p><a class="text-link" href="https://shotclubhouse.com/" target="_blank" rel="noopener">Explore SHOT ↗</a></article><article class="partner-card shirt-card"><span class="eyebrow">Main shirt</span><h3>Far Logistics</h3><p>On the shirt, part of the story.</p></article></div><div class="notice">Partner activations and approved logo assets will be added as they are confirmed with England Beach Soccer.</div><a class="btn btn-blue" href="https://www.englandbeachsoccer.org/partnerships" target="_blank" rel="noopener">Current partnerships ↗</a></div></section>
+  <section class="section white"><div class="container"><div class="section-head"><div><span class="eyebrow red">The people building this</span><h2>More reach.<br>More impact.</h2></div><p>Five roles across the experience, from what happens on the sand to the digital home around it.</p></div><div class="partner-grid">
+    <article class="partner-card partner-light"><span class="eyebrow">Outerwear</span><div class="partner-logo"><img src="/assets/brand/dryrobe.svg" alt="Dryrobe" loading="lazy"></div><h3>Dryrobe</h3><p>Waterproof changing robes and outdoor layers made for warmth and changing beside the beach.</p><a class="text-link" href="https://dryrobe.com/" target="_blank" rel="noopener">Visit Dryrobe ↗</a></article>
+    <article class="partner-card partner-light"><span class="eyebrow">Kit & equipment</span><div class="partner-logo"><img src="/assets/brand/forza.svg" alt="FORZA" loading="lazy"></div><h3>FORZA</h3><p>Kit and equipment partner for the senior England teams, supporting EBS events and the FORZA Super Cup.</p><a class="text-link" href="https://www.forza.com/uk/" target="_blank" rel="noopener">Visit FORZA ↗</a></article>
+    <article class="partner-card donis-card"><span class="eyebrow">Partnerships / delivery</span><div class="partner-logo"><img src="/assets/brand/donis-wordmark-white.png" alt="Donis" loading="lazy"></div><h3>Donis</h3><p>Bringing street football communities and event delivery into the wider beach soccer experience.</p><a class="text-link" href="https://donis.shotclubhouse.com/" target="_blank" rel="noopener">Visit Donis ↗</a></article>
+    <article class="partner-card shot-card"><span class="eyebrow">Software / powered by</span><div class="partner-logo"><img src="/assets/brand/shot-logo.png" alt="SHOT Clubhouse" loading="lazy"></div><h3>SHOT Clubhouse</h3><p>Building this digital home and shaping connected event, community, content and performance journeys.</p><a class="text-link" href="https://shotclubhouse.com/" target="_blank" rel="noopener">Visit SHOT ↗</a></article>
+    <article class="partner-card partner-light"><span class="eyebrow">Main shirt / 2026 season</span><div class="partner-logo"><img src="/assets/brand/far-logistics.svg" alt="FAR Logistics" loading="lazy"></div><h3>FAR Logistics</h3><p>UK freight and supply chain specialist, announced as front-of-shirt sponsor for the men’s and women’s 2026 international season.</p><a class="text-link" href="https://farlogistics.co.uk/" target="_blank" rel="noopener">Visit FAR Logistics ↗</a></article>
+  </div><div class="notice">Partner roles for the 2027 season, including the continuation of the published FORZA and FAR Logistics agreements, will be confirmed with England Beach Soccer.</div><a class="btn btn-blue" href="https://www.englandbeachsoccer.org/partnerships" target="_blank" rel="noopener">Current partnerships ↗</a></div></section>
   <section class="section blue"><div class="container feature-cta"><div><span class="eyebrow">A platform for the next wave</span><h2>Build with the game.</h2><p>Events, teams, content and community give partners ways to contribute beyond a logo on a board.</p></div><a class="btn btn-white" href="https://www.englandbeachsoccer.org/contact" target="_blank" rel="noopener">Contact England Beach Soccer ↗</a></div></section></main>`;
 }
 function aboutPage() {
@@ -124,4 +136,26 @@ if (page === 'teams') {
   const setTeam = id => { const [title, copy, image] = teams[id]; document.getElementById('team-title').textContent = title; document.getElementById('team-copy').textContent = copy; document.getElementById('team-image').src = image; document.getElementById('team-image').alt = `${title} beach soccer`; };
   const selected = new URLSearchParams(location.search).get('team'); if (selected && teams[selected]) setTeam(selected);
   document.querySelectorAll('[data-team]').forEach(link => link.addEventListener('click', () => { setTeam(link.dataset.team); history.replaceState(null, '', `/teams/?team=${link.dataset.team}#team-spotlight`); }));
+}
+if (page === 'news') {
+  const search = document.getElementById('news-search');
+  const year = document.getElementById('news-year');
+  const results = document.getElementById('news-results');
+  const count = document.getElementById('news-count');
+  const more = document.getElementById('news-more');
+  let visible = 24;
+  const show = () => {
+    const query = search.value.trim().toLocaleLowerCase('en-GB');
+    const filtered = newsArchive.filter(item => (year.value === 'all' || item.date.startsWith(year.value)) && item.title.toLocaleLowerCase('en-GB').includes(query));
+    results.innerHTML = filtered.length ? filtered.slice(0, visible).map(item => {
+      const date = new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' }).format(new Date(`${item.date}T12:00:00Z`));
+      return `<a class="archive-item" href="${esc(item.href)}" target="_blank" rel="noopener" aria-label="Read ${esc(item.title)} on England Beach Soccer"><time datetime="${item.date}">${date}</time><h3>${esc(item.title)}</h3><span aria-hidden="true">↗</span></a>`;
+    }).join('') : '<p class="empty">No stories match. Try another title or year.</p>';
+    count.textContent = `Showing ${Math.min(visible, filtered.length)} of ${filtered.length} ${filtered.length === 1 ? 'story' : 'stories'}`;
+    more.hidden = visible >= filtered.length;
+  };
+  search.addEventListener('input', () => { visible = 24; show(); });
+  year.addEventListener('change', () => { visible = 24; show(); });
+  more.addEventListener('click', () => { visible += 24; show(); });
+  show();
 }
