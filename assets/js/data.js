@@ -18,9 +18,9 @@ export const events = [
 ];
 
 export const news = [
-  { category: 'National Championships', title: 'A landmark weekend for beach soccer', summary: 'A look back at the 2026 national championships and the teams who made the sand their stage.', image: '/ebs-site/assets/images/women-celebrate.webp', href: 'https://www.englandbeachsoccer.org/post/national-championships-2026' },
-  { category: 'Pathway', title: 'The North East steps onto the sand', summary: 'Community, development and competition meet at the Longsands Beach Soccer Cups.', image: '/ebs-site/assets/images/mens-duel.webp', href: 'https://www.englandbeachsoccer.org/post/north-east-beach-soccer' },
-  { category: 'International', title: 'English clubs on the European stage', summary: 'Isle of Wight and Portsmouth represented England at the Euro Winners Cup.', image: '/ebs-site/assets/images/international-action.webp', href: 'https://www.englandbeachsoccer.org/post/european-club-championships-report' }
+  { category: 'National Championships', title: 'A landmark weekend for beach soccer', summary: 'A look back at the 2026 national championships and the teams who made the sand their stage.', image: '/assets/images/women-celebrate.webp', href: 'https://www.englandbeachsoccer.org/post/national-championships-2026' },
+  { category: 'Pathway', title: 'The North East steps onto the sand', summary: 'Community, development and competition meet at the Longsands Beach Soccer Cups.', image: '/assets/images/mens-duel.webp', href: 'https://www.englandbeachsoccer.org/post/north-east-beach-soccer' },
+  { category: 'International', title: 'English clubs on the European stage', summary: 'Isle of Wight and Portsmouth represented England at the Euro Winners Cup.', image: '/assets/images/international-action.webp', href: 'https://www.englandbeachsoccer.org/post/european-club-championships-report' }
 ];
 
 export function dateLabel(event) {
