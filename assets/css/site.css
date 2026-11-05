@@ -23,6 +23,7 @@
 .partner-card h3{font-size:clamp(2rem,3vw,3.5rem);margin-bottom:12px}
 .partner-card p{max-width:42ch}
 .partner-card .text-link{margin-top:auto;font-weight:800}
+.pathway-card{color:var(--ink)}
 .shot-card{background:#260052}
 .donis-card{background:#151515}
 @media(max-width:1120px){.shot-powered{margin-left:auto}.shot-powered span{display:none}.shot-powered img{width:76px}.nav{gap:11px}.nav a{font-size:.65rem}}
