@@ -13,7 +13,6 @@
 .footer-powered{display:inline-flex;align-items:center;gap:14px;margin-top:14px;font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.12em}
 .footer-powered img{width:120px;height:auto}
 .hero-photo.full-photo{right:0;bottom:0;width:43%;height:88%;max-height:none;object-fit:contain;object-position:center bottom;filter:none;border-radius:2px}
-.image-panel img[src*="women-celebrate"],.image-panel img[src*="mens-duel"]{object-fit:contain;object-position:center bottom}
 .performance-section{gap:clamp(32px,5vw,90px)}
 .performance-mark{min-height:340px;background:var(--deep);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:34px;padding:50px;text-align:center;font-family:'Barlow Condensed',Impact,sans-serif;text-transform:uppercase;font-size:clamp(1.8rem,3vw,3.2rem);line-height:1}
 .performance-mark img{width:min(100%,280px)}
@@ -83,3 +82,25 @@
 .eyebrow.red{color:#b51f2d}
 .dark .text-link{color:#fff}
 @media(min-width:1101px){.partner-grid{grid-template-columns:repeat(6,minmax(0,1fr))}.partner-card{grid-column:span 2}.partner-card:nth-last-child(-n+2){grid-column:span 3}}
+
+/* Gallery, home teaser and team entry action. */
+.gallery-grid{columns:3 280px;column-gap:14px}
+.gallery-item{display:block;width:100%;margin:0 0 14px;padding:0;border:0;background:#dce5f1;break-inside:avoid;cursor:zoom-in;overflow:hidden}
+.gallery-item img{display:block;width:100%;height:auto;transition:transform .35s}
+.gallery-item:hover img,.gallery-item:focus-visible img{transform:scale(1.03)}
+.gallery-item:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+#gallery-more{margin-top:24px}
+.teaser-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.teaser-item{display:block;aspect-ratio:3/2;overflow:hidden;background:#dce5f1}
+.teaser-item img{width:100%;height:100%;object-fit:cover;transition:transform .35s}
+.teaser-item:hover img,.teaser-item:focus-visible img{transform:scale(1.04)}
+.lightbox{border:0;padding:0;background:transparent;max-width:100vw;max-height:100vh;width:100vw;height:100vh;color:#fff}
+.lightbox::backdrop{background:rgba(8,20,48,.94)}
+.lightbox[open]{display:grid;grid-template-columns:56px minmax(0,1fr) 56px;grid-template-rows:minmax(0,1fr) auto;align-items:center;justify-items:center;padding:20px 8px}
+.lightbox img{grid-column:2;grid-row:1;max-width:100%;max-height:calc(100vh - 110px);object-fit:contain}
+.lb-cap{grid-column:2;grid-row:2;margin:10px 0 0;font-size:.85rem}
+.lb-prev,.lb-next,.lb-close{background:rgba(255,255,255,.14);color:#fff;border:0;border-radius:50%;width:46px;height:46px;font-size:1.7rem;line-height:1}
+.lb-prev{grid-column:1;grid-row:1}.lb-next{grid-column:3;grid-row:1}.lb-close{position:fixed;top:16px;right:16px;z-index:2}
+.lb-prev:hover,.lb-next:hover,.lb-close:hover{background:rgba(255,255,255,.3)}
+.entry-action{margin-top:26px}
+@media(max-width:760px){.gallery-grid{columns:2 150px;column-gap:10px}.gallery-item{margin-bottom:10px}.teaser-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.lightbox[open]{grid-template-columns:40px minmax(0,1fr) 40px}.lb-prev,.lb-next{width:38px;height:38px}}
