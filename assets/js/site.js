@@ -61,7 +61,7 @@ const heroPrints = [
 const wall = ['youth-12', 'clubs-41', 'youth-49', 'clubs-24', 'youth-44', 'clubs-06', 'youth-15', 'clubs-35', 'youth-57', 'clubs-09', 'youth-34', 'clubs-44', 'youth-24', 'clubs-02'];
 const wall2 = ['youth-42', 'clubs-17', 'youth-62', 'clubs-11', 'youth-50', 'clubs-40', 'youth-22', 'clubs-31', 'youth-45', 'clubs-05', 'youth-03', 'clubs-43', 'youth-28', 'clubs-38'];
 function home() {
-  return `<main id="main"><section class="hero hero-fest"><div class="container hero-grid"><div class="hero-copy reveal">
+  return `<main id="main"><section class="hero hero-fest"><div class="container hero-grid"><div class="hero-copy">
     <span class="eyebrow">England Beach Soccer / Season 2027</span><h1><span>Everyone</span><br><span>on the sand.</span></h1>
     <p class="lead">Under-7s at their first festival weekend. Women’s and men’s national finals. England squads abroad and English clubs in Europe. One game, every age.</p>
     <div class="hero-actions"><a class="btn btn-red" href="/events/">Explore 2027 events ↗</a><a class="btn btn-blue" href="#membership">Join the movement ↗</a></div>
@@ -148,6 +148,9 @@ function aboutPage() {
   <section class="section blue"><div class="container feature-cta"><div><span class="eyebrow">What comes next</span><h2>The next wave is yours.</h2><p>The 2027 calendar links regional competition to national finals. Find the weekend that brings the game closer to you.</p></div><a class="btn btn-white" href="/events/">See the calendar ↗</a></div></section></main>`;
 }
 const pages = { home, events: eventsPage, teams: teamsPage, gallery: galleryPage, news: newsPage, partners: partnersPage, about: aboutPage };
+document.documentElement.classList.add('fonts-wait');
+const fontsDone = () => document.documentElement.classList.remove('fonts-wait');
+Promise.race([document.fonts ? Promise.all([document.fonts.load('900 1em "Barlow Condensed"'), document.fonts.load('400 1em "DM Sans"')]) : Promise.resolve(), new Promise(r => setTimeout(r, 1200))]).then(fontsDone, fontsDone);
 root.innerHTML = header() + (pages[page] || home)() + footer();
 document.title = `${routeName[page] || 'Home'} | England Beach Soccer`;
 
